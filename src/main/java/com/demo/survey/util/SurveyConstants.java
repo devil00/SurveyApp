@@ -1,5 +1,7 @@
 package com.demo.survey.util;
 
-public class SurveyConstants {
+import java.text.DecimalFormat;
 
+public class SurveyConstants {
+    public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("0.00");
 }

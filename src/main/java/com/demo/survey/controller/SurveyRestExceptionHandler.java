@@ -3,6 +3,7 @@ package com.demo.survey.controller;
 import com.demo.survey.exceptions.ActionRefusedException;
 import com.demo.survey.exceptions.SurveyException;
 import com.demo.survey.util.ErrorInfo;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,6 +27,13 @@ public class SurveyRestExceptionHandler {
     @ResponseBody
     public ErrorInfo surveyException(HttpServletRequest req, Exception ex) {
         return new ErrorInfo(req.getRequestURL().toString(), ex, HttpStatus.INTERNAL_SERVER_ERROR.value());
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorInfo resourceNotFound(HttpServletRequest req, Exception ex) {
+        return new ErrorInfo(req.getRequestURL().toString(), ex, HttpStatus.NOT_FOUND.value());
     }
 
 }
