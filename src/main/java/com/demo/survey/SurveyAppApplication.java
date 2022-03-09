@@ -15,6 +15,6 @@ public class SurveyAppApplication implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("Launching survey aplication...");
+		log.info("Launching survey application...");
 	}
 }
